@@ -1,0 +1,37 @@
+@(message: String, form: Form[User]) 
+@import helper.twitterBootstrap._ 
+
+@main("Bem vindos à MyBet") {
+
+@helper.form(routes.Application.registUserSubmit) {
+<div style="">
+	<div class="formContainer">
+		<div class="registUser">
+			<h3>Registar-se em MyBet</h3>
+			<br/>
+			<br/>
+            @helper.inputText(field=form("email"),
+                args='_label -> "Utilizador (Email)", 'placeholder->"ex: first.last@gmail.com")
+			<br/>
+			@helper.inputText(field=form("name"), args='_label -> "Nome completo")
+			<br/>
+			@helper.inputPassword(field=form("password"), args='_label -> "Palavra chave")
+			
+			@if(form.hasGlobalErrors) {
+			<div class="alert alert-error">
+				<a class="close" data-dismiss="alert">×</a>
+				@form.globalError.message
+			</div>
+			}
+
+			<button class="btn btn-primary" type="submit">Submeter</button>
+			<span><a href="@routes.Application.index">Cancelar</a></span>
+			<br /> 
+		</div>
+		<!--end of login-well-->
+	</div>
+	<!--end span12-->
+</div>
+<!--end row-->
+}
+}

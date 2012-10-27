@@ -1,0 +1,34 @@
+@(form: Form[Login])
+@import helper.twitterBootstrap._ 
+
+@main("Welcome to MyBet"){
+
+@helper.form(routes.Application.authenticate) {
+<div style="">
+	<div class="formContainer">
+		<div class="authenticate">
+			<h3>Entrar em MyBet</h3>
+
+			@helper.inputText(field=form("email"), args='_label -> "Utilizador")
+			@helper.inputPassword(field=form("password"), args='_label ->
+			"Palavra chave") @if(form.hasGlobalErrors) {
+			<div class="alert alert-error">
+				<a class="close" data-dismiss="alert">×</a>
+				@form.globalError.message
+			</div>
+			}
+
+			<button class="btn btn-primary" type="submit">Entrar</button>
+			<p style="padding-top: 5px">
+				<input type="checkbox" id="remember">&nbsp;&nbsp;Manter-me
+				autenticado</input>
+			</p>
+			<br /> <span> <a href="/registUser" style="font-size: 10px">Não
+					se lembra do seu Utilizador ou Palavra chave?</a> </span>
+		</div>
+		<!--end of login-well-->
+	</div>
+	<!--end span12-->
+</div>
+}
+}
